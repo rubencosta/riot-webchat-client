@@ -1,3 +1,5 @@
+require('./components/messageBox/messageBox.tag');
+
 <app>
-    <h1> App </h1>
+    <message-box></message-box>
 </app>
