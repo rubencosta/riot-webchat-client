@@ -88,9 +88,11 @@ class MessageStore {
     }
 
     getChatById(id) {
-        chats.forEach((chat) => {
-            return chat.id === id && chat;
-        })
+        for (let i = 0; i < chats.length; i++) {
+            if (chats[i].id === id) {
+                return chats[i];
+            }
+        }
     }
 
     getAllChats() {
