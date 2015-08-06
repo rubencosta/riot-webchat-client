@@ -111,6 +111,14 @@ MessageStore.prototype.actionHandler = {
         });
 
         this.trigger('updated');
+    },
+    sendMessage: function (message) {
+        chats.forEach((chat) => {
+            if (chat.id === openChatID) {
+                chat.messages.push(message);
+                this.trigger('updated');
+            }
+        });
     }
 };
 

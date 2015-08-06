@@ -2,5 +2,6 @@
 
 
 module.exports = {
-    updateOpenChatID: 'updateOpenChatID'
+    updateOpenChatID: 'updateOpenChatID',
+    sendMessage: 'sendMessage'
 };
