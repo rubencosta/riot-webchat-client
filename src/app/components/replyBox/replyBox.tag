@@ -1,12 +1,13 @@
 var messageStore = require('../../stores/messageStore');
+require('../riotMDL/input/input.tag');
 
 <reply-box>
-    <form onsubmit={submit}>
-        <input type="text" placeholder="Type here to reply..." name="input">
+    <form onsubmit="{submit}">
+        <rmdl-input type="text" id="input" label="type here to reply"></rmdl-input>
     </form>
     <script>
         this.on('update', function () {
-            this.input.value = '';
+            this.tags['rmdl-input']['{ opts.id }'].value = '';
         });
 
         this.on('mount', function () {
@@ -18,11 +19,15 @@ var messageStore = require('../../stores/messageStore');
         });
 
         this.submit = function () {
+            if(!this.tags['rmdl-input']['{ opts.id }'].value){
+                return false;
+            }
             messageStore.trigger('sendMessage', {
-                contents: this.input.value,
+                contents: this.tags['rmdl-input']['{ opts.id }'].value,
                 timestamp: +new Date(),
                 from: 1
             });
         };
+
     </script>
 </reply-box>
