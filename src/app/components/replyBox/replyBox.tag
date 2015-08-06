@@ -10,7 +10,6 @@ var messageStore = require('../../stores/messageStore');
         });
 
         this.on('mount', function () {
-            this.input.value = '';
             messageStore.on('updated', this.update)
         });
 
