@@ -73,9 +73,9 @@ var chats = [
 
 var openChatID = parseInt(chats[0].id, 10);
 
-class MessageStore extends riot.observable{
+class MessageStore {
     constructor() {
-        super(this);
+        riot.observable(this);
         for (var key in chatActions) {
             let action = chatActions[key];
             this.on(action, this.actionHandler[action])
