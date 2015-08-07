@@ -2,11 +2,22 @@ var messageStore = require('../../stores/messageStore');
 
 <chat-list>
         <a each={chats} href="#" onclick={parent.updateOpenChatID} class="{mdl-navigation__link: true, active: active.call(this)}">
-            {user.name} , {lastMessage.contents}
+            <div class="shiat-user-list-item">
+                <div class="shiat-user-list-image" style="{this.getProfilePictureStyle(user.profilePicture)}"></div>
+            <div class="shiat-user-list-name">{user.name}</div>
+            <div
+                    class="shiat-user-list-timestamp">{lastMessage.timestamp}</div>
+            <div class="shiat-user-list-message">{lastMessage.contents}</div>
+            </div>
         </a>
     <style scoped>
         a.active {
-            background-color: #000066;
+            background-color: #757575;
+            color: rgb(250,250,250) !important;
+        }
+        a:hover {
+            background-color: rgb(224,224,224);
+            color: #757575 !important;
         }
     </style>
 
@@ -50,6 +61,10 @@ var messageStore = require('../../stores/messageStore');
 
         this.updateOpenChatID = function (e) {
             messageStore.trigger('updateOpenChatID', e.item.id);
+        }
+
+        this.getProfilePictureStyle = function (imgUrl) {
+            return 'background-image: url("'+ imgUrl +'")'
         }
     </script>
 </chat-list>
