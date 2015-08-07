@@ -37,7 +37,8 @@ var config = {
         loaders: [
             {test: /\.js|\.tag$/, exclude: /node_modules/, loader: 'babel-loader'},
             {test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader'},
-            {test: /\.css$/, loader: 'style-loader!css-loader'}
+            {test: /\.css$/, loader: 'style-loader!css-loader'},
+            {test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.woff2$|\.eot|\.ttf$|\.wav$|\.mp3$/, loader: "file"}
         ]
     },
     devServer: {
@@ -47,5 +48,6 @@ var config = {
 
 config.addVendor('material-design-lite', vendor_dir + '/material-design-lite/material.js');
 config.addVendor('material-design-lite.css', vendor_dir + '/material-design-lite/material.css');
+config.addVendor('roboto-fontface.css', vendor_dir + '/roboto-fontface/css/roboto-fontface.css');
 
 module.exports = config;

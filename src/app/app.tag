@@ -23,9 +23,4 @@ require('./components/replyBox/replyBox.tag');
             <reply-box></reply-box>
         </main>
     </div>
-    <style>
-        body {
-            height: 100%;
-        }
-    </style>
 </app>
