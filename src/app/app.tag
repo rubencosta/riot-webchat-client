@@ -1,9 +1,12 @@
+require('material-design-lite');
+require('material-design-lite.css');
+
+require('./app.styl');
+
 require('./components/messageBox/messageBox.tag');
 require('./components/chatList/chatList.tag');
 require('./components/replyBox/replyBox.tag');
 
-require('material-design-lite');
-require('material-design-lite.css');
 
 <app>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--overlay-drawer-button">
