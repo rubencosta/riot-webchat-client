@@ -2,7 +2,7 @@ var messageStore = require('../../stores/messageStore');
 
 <chat-list>
         <a each={chats} href="#" onclick={parent.updateOpenChatID} class="{mdl-navigation__link: true, active: active.call(this)}">
-            {user.name}
+            {user.name} , {lastMessage.contents}
         </a>
     <style scoped>
         a.active {
@@ -13,7 +13,27 @@ var messageStore = require('../../stores/messageStore');
     <script>
         this.on('update', function () {
             this.openChatID = messageStore.getOpenChatID();
-            this.chats = messageStore.getAllChats();
+            this.chats = [];
+            let allChats = messageStore.getAllChats();
+            allChats.forEach(chat => {
+                let messagesLength = chat.messages.length;
+                this.chats.push({
+                    id: chat.id,
+                    lastMessage: chat.messages[messagesLength - 1],
+                    lastAccess: chat.lastAccess,
+                    user: chat.user
+                });
+            });
+
+            this.chats.sort(function (a, b) {
+                if (a.lastMessage.timestamp > b.lastMessage.timestamp) {
+                    return -1;
+                }
+                if (a.lastMessage.timestamp < b.lastMessage.timestamp) {
+                    return 1;
+                }
+                return 0;
+            });
         });
 
         this.on('mount', function () {
