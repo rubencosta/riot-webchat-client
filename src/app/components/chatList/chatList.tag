@@ -1,12 +1,13 @@
 var messageStore = require('../../stores/messageStore');
+var prettyDates = require('../../shared/prettyDates');
 
 <chat-list>
-        <a each={chats} href="#" onclick={parent.updateOpenChatID} class="{mdl-navigation__link: true, active: active.call(this)}">
+        <a each={chats} href="#" onclick={updateOpenChatID} class="{mdl-navigation__link: true, active: active.call(this)}">
             <div class="shiat-user-list-item">
                 <div class="shiat-user-list-image" style="{this.getProfilePictureStyle(user.profilePicture)}"></div>
             <div class="shiat-user-list-name">{user.name}</div>
             <div
-                    class="shiat-user-list-timestamp">{lastMessage.timestamp}</div>
+                    class="shiat-user-list-timestamp">{prettyDates(lastMessage.timestamp)}</div>
             <div class="shiat-user-list-message">{lastMessage.contents}</div>
             </div>
         </a>
@@ -65,6 +66,10 @@ var messageStore = require('../../stores/messageStore');
 
         this.getProfilePictureStyle = function (imgUrl) {
             return 'background-image: url("'+ imgUrl +'")'
+        }
+
+        this.prettyDates = function (timestamp) {
+            return prettyDates.getShortDate(timestamp);
         }
     </script>
 </chat-list>
