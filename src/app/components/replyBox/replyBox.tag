@@ -3,11 +3,22 @@ require('../riotMDL/input/input.tag');
 
 <reply-box>
     <form onsubmit="{submit}">
-        <rmdl-input type="text" id="input" label="type here to reply"></rmdl-input>
+        <input type="text" name="input">
     </form>
+    <style scoped>
+        form {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        input {
+            width: 100%;
+            padding: 4px;
+        }
+    </style>
     <script>
         this.on('update', function () {
-            this.tags['rmdl-input']['{ opts.id }'].value = '';
+            this.input.value = '';
         });
 
         this.on('mount', function () {
@@ -19,11 +30,11 @@ require('../riotMDL/input/input.tag');
         });
 
         this.submit = function () {
-            if(!this.tags['rmdl-input']['{ opts.id }'].value){
+            if(!this.input.value){
                 return false;
             }
             messageStore.trigger('sendMessage', {
-                contents: this.tags['rmdl-input']['{ opts.id }'].value,
+                contents: this.input.value,
                 timestamp: +new Date(),
                 from: 1
             });

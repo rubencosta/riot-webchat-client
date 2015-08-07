@@ -1,15 +1,9 @@
 var messageStore = require('../../stores/messageStore');
 
 <chat-list>
-    <div>
-        <span>Chats</span>
-        <nav>
-            <a each={chats} href="#" onclick={parent.updateOpenChatID} class={active: active.call(this)}>
-                {user.name}
-            </a>
-        </nav>
-    </div>
-
+        <a each={chats} href="#" onclick={parent.updateOpenChatID} class="{mdl-navigation__link: true, active: active.call(this)}">
+            {user.name}
+        </a>
     <style scoped>
         a.active {
             background-color: #000066;

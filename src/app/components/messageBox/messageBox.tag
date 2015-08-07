@@ -1,13 +1,10 @@
 var messageStore = require('../../stores/messageStore');
+require('../riotMDL/layout/content.tag');
 
 <message-box>
-    <main>
-        <div>
             <ul>
                 <li each={messages}>{contents}</li>
             </ul>
-        </div>
-    </main>
 
     <script>
         this.on('update',function () {
