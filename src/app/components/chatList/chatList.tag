@@ -1,14 +1,16 @@
+require('./chatList.styl');
+
 var messageStore = require('../../stores/messageStore');
 var prettyDates = require('../../shared/prettyDates');
 
 <chat-list>
         <a each={chats} href="#" onclick={updateOpenChatID} class="{mdl-navigation__link: true, active: active.call(this)}">
-            <div class="shiat-user-list-item">
-                <div class="shiat-user-list-image" style="{this.getProfilePictureStyle(user.profilePicture)}"></div>
-            <div class="shiat-user-list-name">{user.name}</div>
+            <div class="chat-user-list-item">
+                <div class="chat-user-list-image" style="{this.getProfilePictureStyle(user.profilePicture)}"></div>
+            <div class="chat-user-list-name">{user.name}</div>
             <div
-                    class="shiat-user-list-timestamp">{prettyDates(lastMessage.timestamp)}</div>
-            <div class="shiat-user-list-message">{lastMessage.contents}</div>
+                    class="chat-user-list-timestamp">{prettyDates(lastMessage.timestamp)}</div>
+            <div class="chat-user-list-message">{lastMessage.contents}</div>
             </div>
         </a>
     <style scoped>
